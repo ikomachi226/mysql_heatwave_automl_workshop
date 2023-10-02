@@ -28,7 +28,7 @@
 
 Iris Data Setには以下のデータがあり、がく片と花弁の特徴を用いてクラスラベルを予測します。
 
-Irisの分類
+Irisの分類：
 -  sepal length がく片の長さ (cm)
 -  sepal width  がく片の幅 (cm)
 -  petal length 花弁の長さ (cm)
