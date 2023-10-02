@@ -23,7 +23,9 @@
 (https://oracle-japan.github.io/ocitutorials/beginners/getting-started/)**. 
 
 **ワークショップで利用するデータについて**
+
 このワークショップでは、UCI Machine Learning Repositoryから公開されているIris Data Setを使用します。
+
 Iris Data Setには以下のデータがあり、萼片と花弁の特徴を用いてクラスラベルを予測します。
 
 アイリスの種類
