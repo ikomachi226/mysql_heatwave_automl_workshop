@@ -36,7 +36,7 @@ Iris Data Setには以下のデータがあり、萼片と花弁の特徴を用�
 がく片は蕾の段階で花を包み保護する部分。花弁は葉のような部分。
 ![Iris画像](./iris-flowers.png)
 
-可能なクラス値：
+クラスラベル：
 -  Iris Setosa      ヒオウギアヤメ
 -  Iris Versicolour ブルーフラッグ
 -  Iris Virginica   バージニカ
