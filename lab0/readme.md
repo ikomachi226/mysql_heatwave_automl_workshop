@@ -18,11 +18,15 @@ Oracle Cloudは、SaaS（Software as a Service）、PaaS（Platform as a Service
 Oracle Cloudからサインアウトした場合は、以下の手順で再サインインします。
 
 1. cloud.oracle.com に移動し、Cloud Account Name を入力し、Next をクリックします。これは、アカウントを作成するときに選択した名前です。メールアドレスではありません。名前を忘れた場合は、確認メールを参照してください。
+!./image/cloud-oracle.png
 
 2. Continueをクリックして、ログイン入力フィールドを表示します。
+!./image/oci-signin.png
 
 3. クラウドアカウントの認証情報を入力し、[Sign In]をクリックします。ユーザー名はメールアドレスです。パスワードはアカウント登録時に選択したものです。
+!./image/cloud-login-tenant.png
 
-4. これでOracle Cloudにサインインしました。
+5. これでOracle Cloudにサインインしました。
+!./image/home-page.png
 
 次の章に進むことができます。
