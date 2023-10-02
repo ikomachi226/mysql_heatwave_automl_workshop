@@ -32,14 +32,14 @@ Iris Data Setには以下のデータがあり、萼片と花弁の特徴を用�
     sepal width  がく片の幅 (cm)
     petal length 花弁の長さ (cm)
     petal width  花びらの幅 (cm)
-がく片は蕾の段階で花を包み保護する部分。花弁は葉のような部分で、カラフルなものが多い
+がく片は蕾の段階で花を包み保護する部分。花弁は葉のような部分。
 ![Iris画像](./iris-flowers.png)
 
 可能なクラス値：
 
     Iris Setosa      ヒオウギアヤメ
     Iris Versicolour ブルーフラッグ
-    Iris Virginica   ヴァージニカ
+    Iris Virginica   バージニカ
 
 
 
