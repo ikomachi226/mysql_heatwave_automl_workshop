@@ -24,11 +24,11 @@
 
 **ワークショップで利用するデータについて**
 
-このワークショップでは、UCI Machine Learning Repositoryから公開されているIris Data Setを使用します。
+このワークショップでは、UCI Machine Learning Repositoryから公開されているIris Data Set(アヤメの分類)を使用します。
 
 Iris Data Setには以下のデータがあり、萼片と花弁の特徴を用いてクラスラベルを予測します。
 
-アイリスの種類
+Irisの分類
 -  sepal length がく片の長さ (cm)
 -  sepal width  がく片の幅 (cm)
 -  petal length 花弁の長さ (cm)
