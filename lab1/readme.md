@@ -10,10 +10,10 @@
 3. [コンパートメントの作成]ダイアログで[名前][説明]を入力します。
 
 名前:
-  automl
+  ```automl```
   
 説明:
-  AutoMLワークショップ用コンパートメント
+  ```Compartment for AutoML with MySQL Database workshop```
 
 4. 親コンパートメントが自動的に表示されたら[コンパートメントを作成]をクリックします。
 
