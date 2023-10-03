@@ -9,8 +9,8 @@
 2. [コンパートメント]画面で[コンパートメントの作成]をクリックします。
 3. [コンパートメントの作成]ダイアログで[名前][説明]を入力します。
 
-名前
-  **`automl`**
+```名前
+  **`automl`**```
   
 説明
   **`Compartment for AutoML with MySQL Database workshop`**
