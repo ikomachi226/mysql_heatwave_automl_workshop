@@ -45,10 +45,42 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
   ```
 
 ##タスク2: トレーニング用データとテスト用データをロードします
+1. MySQL HeatWave DBシステムで機械学習スキーマとテーブルを作成するには、以下のコマンドでサンプルデータベースをダウンロードします：
 
-##タスク3:
+  - この[リンク](./iris-ml-data.txt)をクリックして、iris-ml-data.txt ファイルをローカルマシンにダウンロードします。
+  - ローカルマシンから iris-ml-data.txt をメモ帳等のエディタで開きます。
+    
+2. MySQL Shellにiris-ml-data.txtの内容をコピー＆ペーストし、最後にEnterを押す。（最後の文の確認を忘れないでください）
+3. 機械学習スキーマ(ml_data)およびスキーマ配下のテーブルを確認する。
+   ```
+   use ml_data;
+   show tables;
+   ```
 
-##タスク4:
+##タスク3:　機械学習モデルのトレーニングを行う(分類)
+1. ML_TRAIN()を実行してモデルのトレーニングを行います。
+   ```
+   CALL sys.ML_TRAIN('ml_data.iris_train', 'class',JSON_OBJECT('task', 'classification'), @iris_model);
+   ```
+2. トレーニングが終了すると、モデルハンドルが@iris_modelに出力され、モデルがモデルカタログに格納されます。
+
+   モデルカタログのエントリは以下のクエリで確認することができます。
+   ```
+   SELECT model_id, model_handle, train_table_name FROM ML_SCHEMA_admin.MODEL_CATALOG;
+   ```
+3. ML_MODEL_LOAD()を使用してモデルをロードします。
+   ```
+   CALL sys.ML_MODEL_LOAD(@iris_model, NULL);
+   ```
+   **モデルを使用する前に、モデルをロードする必要があります。**
+   
+   **モデルはアンロードするか、HeatWaveクラスタを再起動するまでロードされた状態になります。**
+
+   出力は次のようになります。
+   
+
+##タスク4:　 単一データに対する予測と説明
+
 
 ##タスク5:
 
