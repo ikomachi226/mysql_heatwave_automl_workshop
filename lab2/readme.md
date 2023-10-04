@@ -6,7 +6,7 @@ MySQL DBシステムには、クラスタ管理、HeatWaveクラスタへのデ�
 
 このセクションでは、lab1で起動したMySQL HeatWaveインスタンスへHeatWaveクラスタの追加を行います。
 
-### タスク１: HEATWAVE-DBにHeatWaveクラスタを追加する
+## タスク１: HEATWAVE-DBにHeatWaveクラスタを追加する
 1. OCIメニューから[データベース]-[MySQL]-[DBシステム]を選択します。
 2. automlコンパートメント配下のDBシステム一覧からcを選択します。
 3. [HEATWAVE-DB]の詳細画面で[その他のアクション]-[HeatWaveクラスタの編集]を選択します。
