@@ -15,7 +15,9 @@ Cloud ShellはBashシェルを実行する仮想マシンで、OCIコンソー�
 
 1. Cloud Sheを起動し、Bastion セッションで使用する SSH キーを生成します。
 
-Oracle Cloud シェルを起動するには、Cloud コンソールに移動し、ページの右上にあるクラウドシェルアイコンをクリックします。これでブラウザでクラウドシェルが開きますが、初回は生成に時間がかかる場合があります。
+Oracle Cloud シェルを起動するには、Cloud コンソールに移動し、ページの右上にある[開発者ツール]アイコン-[Cloud Shell]をクリックします。
+
+これでブラウザでCloud Shellが起動されますが、初回は生成に時間がかかる場合があります。
 
 ***Cloud Shell ウィンドウの右上隅にあるアイコンを使用して、Cloud Shell セッションを最小化、最大化、再起動、および終了することができます。***
 
@@ -96,5 +98,26 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
     - **Are you sure you want to continue connecting (yes/no)?**　と聞かれたら **yes**を入力します
 
 ## タスク4: MySQL Shellをインストールし、MySQL HeatWaveに接続する
-1. 
+1. Cloud Shellウィンドウから、以下のコマンドを実行してMySQL Shellをインストールします。
+
+    (RHEL8系のOSにディストリビューションされているMySQLモジュールを無効化してインストールします) 
+   ```
+   sudo yum install https://dev.mysql.com/get/mysql80-community-release-el8-4.noarch.rpm
+   sudo yum module disable mysql
+   sudo yum install mysql-shell
+   ```
+
+2. Cloud Shellウィンドウから、以下のコマンドを実行してコンピュートインスタンス経由でMySQL HeatWaveに接続します。
+   ```
+   mysqlsh -uadmin -p -h <MySQL HeatWaveインスタンスのエンドポイントIPアドレス>
+   ```
+3. 接続できたらスキーマ一覧を確認します。
+   ```
+   \sql
+   show databases;
+   ```
+
+**補足資料**
+
+[Cloud Shellについて](https://www.oracle.com/jp/devops/cloud-shell/?source=:so:ch:or:awr::::Sc)
 
