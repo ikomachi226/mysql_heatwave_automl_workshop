@@ -112,4 +112,4 @@ config.phpファイルのデータベースIPをHeatwaveのデータベースIP�
 ![iris-web-php](./image/iris-web-php.png)
 
 6. テキスト・ボックスにテスト値を入力し（ページ内の例を使用できます）、 **Submit** ボタンを押すと予測結果が表示されます。
-![iris-web-php-result](./image/iris-web-php-result.php)
+![iris-web-php-result](./image/iris-web-php-result.png)
