@@ -5,7 +5,7 @@
 ## タスク1: MySQL HeatWaveインスタンスを停止する
 1. OCIメニューから[データベース]-[MySQL HeatWave]-[DBインスタンス]を選択する
 
-2.　[automl]コンパートメントを選択してインスタンス一覧から **HEATWAVE-DB** を選択する
+2. [automl]コンパートメントを選択してインスタンス一覧から[HEATWAVE-DB]を選択する
 
 3. [HEATWAVE-DB]詳細画面で[停止]ボタンをクリックします。
 
