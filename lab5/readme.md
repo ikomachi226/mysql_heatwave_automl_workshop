@@ -39,6 +39,8 @@ HeatWave AutoMLは、既存の開発作業に簡単に使用することがで�
   
   **例：http://129.213...**
 
+   ![apache-test-page](./image/apache-test-page.png)
+
 ## タスク2: PHPをインストールする
   1. php7.4 をインストールします。
   ```
@@ -52,7 +54,6 @@ HeatWave AutoMLは、既存の開発作業に簡単に使用することがで�
   ```
   php -m |grep mysql
   ```
-
   4. PHP のバージョンを表示する
   ```
   php -v
@@ -72,6 +73,7 @@ HeatWave AutoMLは、既存の開発作業に簡単に使用することがで�
   ?>
   ```
   8. ローカルマシンからinfo.phpページをブラウズし、PHP設定が読み込めることを確認します。
+![php-info](./image/php-info.png)
 
 ## タスク3: HeatWave AutoMLを使ったアプリを作成する
 1. Apache が MySQL に接続できるように SELinux の設定します。
@@ -93,6 +95,7 @@ config.phpファイルのデータベースIPをHeatwaveのデータベースIP�
   ```
   sudo nano iris_app/config.php
   ```
+![iris-web-php-config](./image/iris-web-php-config.png)
 
 4. ローカルマシンからconfig.phpのページをブラウズし、接続成功のメッセージを確認します。
 
@@ -100,9 +103,13 @@ config.phpファイルのデータベースIPをHeatwaveのデータベースIP�
 
    config.phpのテスト例 **http://150.230....iris_app/config.php**
 
+![iris-web-php-config-ok](./image/iris-web-php-config-ok.png)
+
 5. 接続テストが成功したら、以下のようにアプリケーションを実行してください：
    ```
     http://<コンピュートインスタンスのIPアドレス>/iris_app/index.php
     ```
+![iris-web-php](./image/iris-web-php.png)
 
 6. テキスト・ボックスにテスト値を入力し（ページ内の例を使用できます）、 **Submit** ボタンを押すと予測結果が表示されます。
+![iris-web-php-result](./image/iris-web-php-result.php)
