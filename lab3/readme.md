@@ -71,6 +71,7 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
   - Shape: **VM.Standard.E4**
 
     OCPU,メモリー量を以下のように変更します。
+    
     ```
     OCPU: 2
     メモリー量: 32
