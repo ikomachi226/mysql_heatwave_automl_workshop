@@ -9,7 +9,7 @@ MySQL HeatWaveは、お客様のデータを潜在的な攻撃や脆弱性から
 
 そのためにこのセクションでは、SSHキー、コンピュートインスタンスを起動して、MySQL Shell(クライアント)をインストールします。
 
-##タスク1: Cloud ShellからSSHキーを作成する
+## タスク1: Cloud ShellからSSHキーを作成する
 
 Cloud ShellはBashシェルを実行する仮想マシンで、OCIコンソールからアクセスします。
 
