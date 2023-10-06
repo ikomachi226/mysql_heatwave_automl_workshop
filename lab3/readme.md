@@ -35,7 +35,7 @@ Oracle Cloud シェルを起動するには、Cloud コンソールに移動し�
 
   各質問に対してEnterキーを入力します。以下のようになります。
 
-  ![ssh-key-display](./image/ssh-key-display.png)
+  ![ssh-key-show](./image/ssh-key-show.png)
   
 3. SSHの公開鍵と秘密鍵は**~/.ssh/id_rsa.pub**に格納されます。
 
@@ -47,7 +47,7 @@ Oracle Cloud シェルを起動するには、Cloud コンソールに移動し�
   ls
   ```
 
-  ![ssh-key-show](./image/ssh-key-show.png)
+  ![shh-key-list](./image/shh-key-list.png)
 
   ***出力されるファイルには秘密鍵：id_rsaと公開鍵：id_rsa.pubの2つがあることに注意してください。***
   
@@ -59,26 +59,32 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
 
 1. コンピュートインスタンスを作成する前にメモ帳等のエディタを起動し、以下の手順で公開SSHキーをエディタにコピーします。
   - Cloud Shellウィンドウを開きます。
+
+    ![cloud-shell-open-large](./image/cloud-shell-open-large.png)
+
   - 以下のコマンドを実行します。
     ```
     cat ~/.ssh/id_rsa.pub
     ```
+
+    ![ssh-key-display](./image/ssh-key-display.png)
+
   - 以下のように***id_rsa.pub***の内容をエディタにコピーします。
 
   ![notepad-rsa-key](./image/notepad-rsa-key.png)
 
 2. Cloud Shellウィンドウを最小化します。
 
-  ![cloud-shell-open-large](./image/cloud-shell-open-large.png)
+  ![ssh-key-display-minimize](./image/ssh-key-display-minimize.png)
 
 3. OCIメニューから[コンピュート]-[インスタンス]を選択します。
 
-![compute-menu-create-instance](./image/compute-menu-create-instance.png)
+  ![navigation-compute](./image/navigation-compute.png)  
 
 4. **automl**コンパートメントが選択されていることを確認し、[インスタンスの作成]をクリックします。
 
-  ![navigation-compute](./image/navigation-compute.png)
-
+  ![compute-menu-create-instance](./image/compute-menu-create-instance.png)
+  
   - 名前
     ```
     HEATWAVE-Client
@@ -94,8 +100,6 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
 
   ![compute-create-image](./image/compute-create-image.png)
 
-  ![compute-create-select-shape](./image/compute-create-select-shape.png)
-
   - OCPU,メモリー量を以下のように変更します。
     
     ```
@@ -104,15 +108,17 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
     ```
 
     ![compute-create-change-shape](./image/compute-create-change-shape.png)
-
+    
+    ![compute-create-select-shape](./image/compute-create-select-shape.png)
+   
   - プライマリVNIC情報
     - **既存の仮想クラウド・ネットワークを選択: HEATWAVE-VCN**
     - **既存のサブネットを選択: パブリック・サブネット-HEATWAVE-VCN**
     - **パブリックIPv4アドレス: パブリックIPv4アドレスの自動割当て**
 
-    ![compute-create-networking-select](./image/compute-create-networking-select.png)
-
     ![compute-create-networking](./image/compute-create-networking.png)
+     
+    ![compute-create-networking-select](./image/compute-create-networking-select.png)
 
   - SSHキーの追加: **公開キーの貼付け**
     - 手順1でエディタに貼り付けたSSHキーをコピー＆ペーストします。    
@@ -162,6 +168,8 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
    ```
 
     ![mysql-endpoint-private-ip](./image/mysql-endpoint-private-ip.png)
+
+    ![mysql-shell-first-connect](./image/mysql-shell-first-connect.png)
 
 3. 接続できたらスキーマ一覧を確認します。
    ```
