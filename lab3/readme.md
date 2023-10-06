@@ -70,7 +70,7 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
   - イメージ: **Oracle Linux8**
   - Shape: **VM.Standard.E4**
 
-    OCPU,メモリー量を以下のように変更します。
+  - OCPU,メモリー量を以下のように変更します。
     
     ```
     OCPU: 2
