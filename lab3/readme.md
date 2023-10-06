@@ -17,6 +17,12 @@ Cloud ShellはBashシェルを実行する仮想マシンで、OCIコンソー�
 
 Oracle Cloud シェルを起動するには、Cloud コンソールに移動し、ページの右上にある[開発者ツール]アイコン-[Cloud Shell]をクリックします。
 
+![cloud-shell](./image/cloud-shell.png)
+
+![cloud-shell-setup](./image/cloud-shell-setup.png)
+
+![cloud-shell-open](./image/cloud-shell-open.png)
+
 これでブラウザでCloud Shellが起動されますが、初回は生成に時間がかかる場合があります。
 
 ***Cloud Shell ウィンドウの右上隅にあるアイコンを使用して、Cloud Shell セッションを最小化、最大化、再起動、および終了することができます。***
@@ -28,7 +34,9 @@ Oracle Cloud シェルを起動するには、Cloud コンソールに移動し�
   ```
 
   各質問に対してEnterキーを入力します。以下のようになります。
-    
+
+  ![ssh-key-display](./image/ssh-key-display.png)
+  
 3. SSHの公開鍵と秘密鍵は**~/.ssh/id_rsa.pub**に格納されます。
 
 4. 作成された2つのファイルを確認します。
@@ -38,6 +46,8 @@ Oracle Cloud シェルを起動するには、Cloud コンソールに移動し�
   ```
   ls
   ```
+
+  ![ssh-key-show](./image/ssh-key-show.png)
 
   ***出力されるファイルには秘密鍵：id_rsaと公開鍵：id_rsa.pubの2つがあることに注意してください。***
   
@@ -54,12 +64,21 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
     cat ~/.ssh/id_rsa.pub
     ```
   - 以下のように***id_rsa.pub***の内容をエディタにコピーします。
-    
+
+  ![notepad-rsa-key](./image/notepad-rsa-key.png)
+
 2. Cloud Shellウィンドウを最小化します。
+
+  ![cloud-shell-open-large](./image/cloud-shell-open-large.png)
 
 3. OCIメニューから[コンピュート]-[インスタンス]を選択します。
 
+![compute-menu-create-instance](./image/compute-menu-create-instance.png)
+
 4. **automl**コンパートメントが選択されていることを確認し、[インスタンスの作成]をクリックします。
+
+  ![navigation-compute](./image/navigation-compute.png)
+
   - 名前
     ```
     HEATWAVE-Client
@@ -67,8 +86,15 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
   - コンパートメントに作成: **automl**
   - 配置: **可溶性ドメイン**
   - セキュリティ: **保護インスタンス:無効**
+
+  ![compute-create-security](./image/compute-create-security.png)
+
   - イメージ: **Oracle Linux8**
   - Shape: **VM.Standard.E4**
+
+  ![compute-create-image](./image/compute-create-image.png)
+
+  ![compute-create-select-shape](./image/compute-create-select-shape.png)
 
   - OCPU,メモリー量を以下のように変更します。
     
@@ -76,27 +102,47 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
     OCPU: 2
     メモリー量: 32
     ```
+
+    ![compute-create-change-shape](./image/compute-create-change-shape.png)
+
   - プライマリVNIC情報
     - **既存の仮想クラウド・ネットワークを選択: HEATWAVE-VCN**
     - **既存のサブネットを選択: パブリック・サブネット-HEATWAVE-VCN**
     - **パブリックIPv4アドレス: パブリックIPv4アドレスの自動割当て**
+
+    ![compute-create-networking-select](./image/compute-create-networking-select.png)
+
+    ![compute-create-networking](./image/compute-create-networking.png)
+
   - SSHキーの追加: **公開キーの貼付け**
     - 手順1でエディタに貼り付けたSSHキーをコピー＆ペーストします。    
-  
+
+    ![compute-create-add-ssh-key](./image/compute-create-add-ssh-key.png)
+    
   その他の設定はデフォルトのままにしておきます。 
   
 5. [作成]ボタンをクリックします。
+
+  ![compute-provisioning](./image/compute-provisioning.png)
+
 6. コンピュートの詳細画面のステータスが[作成中]から[実行中]に変わると利用できるようになります。(これには数分かかります)
+
+  ![compute-active](./image/compute-active.png)
 
 ## タスク3: SSHを使用してコンピュートインスタンスに接続します。
 1. 以下をエディタにコピーしておきます。
    - タスク2で起動したコンピュートインスタンスのパブリックIPアドレス
    - MySQL HeatWaveインスタンスのエンドポイントIPアドレス
+
+  ![notepad-rsa-key-compute-db](./image/notepad-rsa-key-compute-db.png)
+
 2. Cloud Shellウィンドウから、以下のコマンドを実行してコンピュートインスタンスに接続します。
     ```
     ssh -i ~/.ssh/id_rsa opc@<コンピュートインスタンスのパブリックIPアドレス>
     ```
     - **Are you sure you want to continue connecting (yes/no)?**　と聞かれたら **yes**を入力します
+
+    ![connect-first-signin](./image/connect-first-signin.png)
 
 ## タスク4: MySQL Shellをインストールし、MySQL HeatWaveに接続する
 1. Cloud Shellウィンドウから、以下のコマンドを実行してMySQL Shellをインストールします。
@@ -108,15 +154,21 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
    sudo yum install mysql-shell
    ```
 
+    ![mysql-install-shell](./image/mysql-install-shell.png)
+
 2. Cloud Shellウィンドウから、以下のコマンドを実行してコンピュートインスタンス経由でMySQL HeatWaveに接続します。
    ```
    mysqlsh -uadmin -p -h <MySQL HeatWaveインスタンスのエンドポイントIPアドレス>
    ```
+
+    ![mysql-endpoint-private-ip](./image/mysql-endpoint-private-ip.png)
+
 3. 接続できたらスキーマ一覧を確認します。
    ```
    \sql
    show databases;
    ```
+  ![list-schemas-before](./image/list-schemas-before.png)
 
 **補足資料**
 
