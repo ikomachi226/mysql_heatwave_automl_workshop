@@ -29,6 +29,8 @@ ssh -i id_rsa opc@<コンピュートインスタンスのパブリックIPア�
 mysqlsh -uadmin -p -h <MySQL HeatWaveのプライベートIPアドレス> -P3306 --sql
 ```
 
+![heatwave-load-shell](./image/heatwave-load-shell.png)
+
 **参考**　
 
 このワークショップではMySQL HeatWaveの管理者アカウントを利用していますが、別のMySQLユーザーを使用する場合、
@@ -49,13 +51,20 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
 
   - この[リンク](./iris-ml-data.txt)をクリックして、iris-ml-data.txt ファイルをローカルマシンにダウンロードします。
   - ローカルマシンから iris-ml-data.txt をメモ帳等のエディタで開きます。
-    
+
+    ![iris-ml-data](./image/iris-ml-data.png)
+
 2. MySQL Shellにiris-ml-data.txtの内容をコピー＆ペーストし、最後にEnterを押す。（最後の文の確認を忘れないでください）
+
+    ![iris-ml-data-execute](./image/iris-ml-data-execute.png)
+
 3. 機械学習スキーマ(ml_data)およびスキーマ配下のテーブルを確認する。
    ```
    use ml_data;
    show tables;
    ```
+
+    ![show-ml-data](./image/show-ml-data.png)
 
 ## タスク3:　機械学習モデルのトレーニングを行う(分類)
 1. **ML_TRAIN**ルーチンを実行してモデルのトレーニングを行います。
@@ -78,7 +87,7 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
    **モデルはアンロードするか、HeatWaveクラスタを再起動するまでロードされた状態になります。**
 
    出力例: 
-   
+   ![iris-ml-build-out](./image/iris-ml-build-out.png)
 
 ## タスク4:　 単一データに対する予測と説明
 1. **ML_PREDICT_ROW**ルーチンを使って、1行のデータに対する予測を行います。
@@ -94,6 +103,7 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
 
   出力例：　アイリスがIris-virginicaクラスであると予測し、予測に使われた特徴量も表示されています。
   
+  ![iris-ml-predict-out](./image/iris-ml-predict-out.png)  
   
 2. 組み込み関数　**JSON_PRETTY** を　使用すると、より読みやすいフォーマットで出力させることができます。
 
@@ -102,7 +112,7 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
     ```
     
     出力例:
-   
+    ![iris-ml-predict-out-pretty](./image/iris-ml-predict-out-pretty.png)
 
 4. どのように予測が行われたかを理解するために、**ML_EXPLAIN_ROW** ルーチンを使って説明を生成します。
    ```
@@ -112,6 +122,7 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
    返却値は、どの特徴が予測に最も影響を与えたかを示し、予測に影響しない値は0に近い値が返却されます。
 
    出力例: 花弁の長さとペタルの幅が最も重要な特徴だと示しています
+   ![iris-ml-explain-out](./image/iris-ml-explain-out.png)
    
 ## タスク5:
 1. **ML_PREDICT_TABLE** ルーチンを使って、テーブルデータに対するの予測を行います。
@@ -127,6 +138,7 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
   ```
 
   出力例: 予測値と、それぞれの予測に使われた特徴列の値を示しています
+  ![iris-ml-predict-table](./image/iris-ml-predict-table.png)
 
 3. **ML_EXPLAIN_TABLE** ルーチンを使って、説明を生成します。
   ```
@@ -139,6 +151,7 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
   ```
 
   出力例: 
+  ![iris-ml-explain-table](./image/iris-ml-explain-table.png)
   
 ## タスク6: 機械学習モデルの評価とモデルアンロード
 1. **ML_SCORE** ルーチンを使用してモデルを評価し、モデルの信頼性を確認します。
@@ -153,6 +166,7 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
    SELECT @score；
    ```
   出力例：
+  ![iris-ml-score-model-out](./image/iris-ml-score-model-out.png)
 
 3. **ML_MODEL_UNLOAD** ルーチンを使用してモデルをアンロードします。
    ```
