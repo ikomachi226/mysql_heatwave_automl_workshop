@@ -1,6 +1,25 @@
 # (参考)その他のHeatWave AutoML利用例
 
-### csvファイルの利用方法
+### データファイル(.csv)の利用方法
+1. GitHubから該当のCSVファイルをダウンロードする
+2. OCIコンソールのメニューから[ストレージ]-[バケット]を選択する
+3. [バケットの作成]を選択し、任意のバケット名を指定し作成する
+    ***バケット名、ネームスペースを控えておきます***
+4. [アップロード]ボタンをクリックし、CSVファイルをアップロードする
+5. [PARリクエストの作成]を選択する
+6. コンピュートインスタンスにCloud Shellでログインし、バケットに格納したファイルを取得する
+  ```
+  $ wget https://objectstorage.ap-tokyo-1.oraclecloud.com/n/idazzjlcjqzj/b/xxxx.csv
+  ```
+7. MySQL ShellでMySQL HeatWaveに接続する
+  ```
+  mysqlsh -u<> -p -h<> --sql
+  ```
+8. 新規にテーブルを作成する
+9. 
+  ```
+  util.loadDump("/home/opc/tpch_100g", {dryRun: true, resetProgress:true, ignoreVersion:true, schema: "tpch_100g"})
+  ```
 
 ### 分類
 #### データ
