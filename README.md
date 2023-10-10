@@ -1,6 +1,14 @@
 # HeatWave AutoML WORKSHOP
 
-このワークショップでは、HeatWave AutoMLの機能を使用して、アヤメ(Iris)の花の種類を分類するプロジェクトを実装します。このプロジェクトは、機械学習のHello Worldバージョンとしても知られています。
+MySQL HeatWaveは、RDBやDWHだけでなく機械学習プラットフォームも備えたマネージドサービスです。
+
+![heatwave_overview](./heatwave_overview.png)
+
+HeatWave AutoMLはSQLで機械学習ルーチンを実行することで機械学習モデルの作成や予測を行うことができるため、より簡単に機械学習技術を利用できます。
+
+このワークショップでは、インスタンスを起動してHeatWave AutoMLの機能を利用して、アヤメ(Iris)の花の種類を分類する機械学習モデルを実装します。このプロジェクトは、機械学習のHello Worldバージョンとしても知られています。
+
+![heatwave_automl_overview](./heatwave_automl_overview.png)
 
 データを準備し、ML_TRAINルーチンを使ってモデルを学習し、ML_PREDICT_ルーチンとML_EXPLAIN_ルーチンを使って予測と説明を生成します。
 最後に、ML_SCOREルーチンを使ってモデルの品質を評価し、モデルの説明を見てモデルがどのように機能するかを理解します。
