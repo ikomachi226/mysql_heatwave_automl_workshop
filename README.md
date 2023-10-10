@@ -32,8 +32,8 @@ Irisの分類：
 ![Iris画像](./iris-flowers.png)
 
 クラスラベル：
--  Iris Setosa      ヒオウギアヤメ
 -  Iris Versicolour ブルーフラッグ
+-  Iris Setosa      ヒオウギアヤメ
 -  Iris Virginica   バージニカ
 
 
