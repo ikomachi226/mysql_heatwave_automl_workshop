@@ -15,12 +15,8 @@
 **前提条件**
 -  このハンズオンでは、Oracle Cloud Infrastructureのアカウントが必要になります。有償アカウント、もしくはトライアルアカウントをご用意ください。
 -  コンパートメントが作成されたテナンシが必要になります。
--  トライアルアカウントについては以下を参照ください。
-- **[OCI Cloud Free Tier]
-(https://www.oracle.com/jp/cloud/free/)**. 
--  OCIコンソールの利用方法は以下を参照ください。
-- **[OCIコンソールにアクセスして基本を理解する]
-(https://oracle-japan.github.io/ocitutorials/beginners/getting-started/)**. 
+-  トライアルアカウントについてはこちらを参照ください-> **[OCI Cloud Free Tier](https://www.oracle.com/jp/cloud/free/)**
+-  OCIコンソールの利用方法は以下を参照ください-> **[OCIコンソールにアクセスして基本を理解する](https://oracle-japan.github.io/ocitutorials/beginners/getting-started/)**
 
 **ワークショップで利用するデータについて**
 
