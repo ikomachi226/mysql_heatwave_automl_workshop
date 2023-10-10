@@ -54,7 +54,7 @@ Irisの分類：
 
 ## Lab 6 - [OCIサービスを停止する](./lab6/readme.md)
 
-## Lab 7 - [(参考)モデルごとのパラメタ指定例]
+## Lab 7 - [(参考)その他のHeatWave AutoML利用例]
 ### Lab7-1 - 分類
 ### Lab7-2 - 回帰
 ### Lab7-3 - 時系列予測
