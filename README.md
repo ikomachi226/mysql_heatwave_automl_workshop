@@ -44,27 +44,25 @@ Irisの分類：
 
 
 # ワークショップ概要
-準備ができたらはじめましょう！
 
-## Lab 0 - コンパートメントを作成する
+## Lab 0 - [OCIコンソールにログインする](./lab0/readme.md)
 
-## Lab 1 - 仮想ネットワークを作成する
+## Lab 1 - [仮想ネットワークやMySQL HeatWaveインスタンスを作成する](./lab1/readme.md)
 
-## Lab 2 - MySQL HeatWaveインスタンスを作成する
+## Lab 2 - [HeatWaveクラスタを追加する](./lab2/readme.md)
 
-## Lab 3 - MySQL HeatWaveに接続する
+## Lab 3 - [MySQL HeatWaveインスタンスに接続する](./lab3/readme.md)
 
-## Lab 4 - データをロードする
+## Lab 4 - [HeatWave AutoMLで機械学習モデルを生成する](./lab4/readme.md)
 
-## Lab 5 - HeatWaveクラスタを追加する
+## Lab 5 - [(参考)MySQL HeatWaveを利用したPHPを作成する](./lab5/readme.md)
 
-## Lab 6 - HeatWave AutoMLで機械学習モデルを生成する
-### Lab6-1 - 分類
-### Lab6-2 - 回帰
-### Lab6-3 - 時系列予測
-### Lab6-4 - 教師なし異常検知
-### Lab6-5 - レコメンド
+## Lab 6 - [OCIサービスを停止する](./lab6/readme.md)
 
-## Lab 7 - インスタンスの停止
+## Lab 7 - [(参考)モデルごとのパラメタ指定例]
+### Lab7-1 - 分類
+### Lab7-2 - 回帰
+### Lab7-3 - 時系列予測
+### Lab7-4 - 教師なし異常検知
+### Lab7-5 - レコメンド
 
-## Appendix - データの準備について
