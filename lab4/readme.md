@@ -76,9 +76,13 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
 
    モデルカタログのエントリは以下のクエリで確認することができます。
    ```
-   SELECT model_id, model_handle, train_table_name FROM ML_SCHEMA_admin.MODEL_CATALOG;
+   SELECT model_id, model_handle, train_table_name FROM ML_SCHEMA_<管理者ユーザ名>.MODEL_CATALOG;
    ```
-3. **ML_MODEL_LOAD**ルーチンを使用してモデルをロードします。
+    実行例
+   
+     SELECT model_id, model_handle, train_table_name FROM ML_SCHEMA_admin.MODEL_CATALOG;
+   
+4. **ML_MODEL_LOAD**ルーチンを使用してモデルをロードします。
    ```
    CALL sys.ML_MODEL_LOAD(@iris_model, NULL);
    ```
@@ -96,9 +100,10 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
 
   - モデルハンドルは **@iris_model** セッション変数を使って呼び出されます。
   ```
-  SET @row_input = JSON_OBJECT( "sepal length", 7.3, "sepal width", 2.9, "petal length", 6.3, "petal width", 1.8)；
-
-  SELECT sys.ML_PREDICT_ROW(@row_input, @iris_model, NULL)；
+  SET @row_input = JSON_OBJECT( "sepal length", 7.3, "sepal width", 2.9, "petal length", 6.3, "petal width", 1.8);
+  ```
+  ```
+  SELECT sys.ML_PREDICT_ROW(@row_input, @iris_model, NULL);
   ```
 
   出力例：　アイリスがIris-virginicaクラスであると予測し、予測に使われた特徴量も表示されています。
@@ -108,7 +113,7 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
 2. 組み込み関数　**JSON_PRETTY** を　使用すると、より読みやすいフォーマットで出力させることができます。
 
     ```
-    SELECT JSON_PRETTY(sys.ML_PREDICT_ROW(@row_input, @iris_model, NULL))；
+    SELECT JSON_PRETTY(sys.ML_PREDICT_ROW(@row_input, @iris_model, NULL));
     ```
     
     出力例:
@@ -116,7 +121,7 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
 
 4. どのように予測が行われたかを理解するために、**ML_EXPLAIN_ROW** ルーチンを使って説明を生成します。
    ```
-   SELECT JSON_PRETTY(sys.ML_EXPLAIN_ROW(@row_input, @iris_model, JSON_OBJECT( 'prediction_explainer', 'permutation_importance')));；
+   SELECT JSON_PRETTY(sys.ML_EXPLAIN_ROW(@row_input, @iris_model, JSON_OBJECT( 'prediction_explainer', 'permutation_importance')));
     ```
 
    返却値は、どの特徴が予測に最も影響を与えたかを示し、予測に影響しない値は0に近い値が返却されます。
@@ -129,12 +134,12 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
 
   ここではiris_testテーブルのデータを入力として受け取り、iris_predictions出力テーブルに予測を出力します。
   ```
-  CALL sys.ML_PREDICT_TABLE('ml_data.iris_test', @iris_model,'ml_data.iris_predictions',NULL)；
+  CALL sys.ML_PREDICT_TABLE('ml_data.iris_test', @iris_model,'ml_data.iris_predictions',NULL);
   ```
 
 2. ML_PREDICT_TABLEテーブルに対するクエリを実行して、予測結果を参照します。
   ```
-  SELECT * FROM ml_data.iris_predictions LIMIT 3；
+  SELECT * FROM ml_data.iris_predictions LIMIT 3;
   ```
 
   出力例: 予測値と、それぞれの予測に使われた特徴列の値を示しています
@@ -142,7 +147,7 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
 
 3. **ML_EXPLAIN_TABLE** ルーチンを使って、説明を生成します。
   ```
-  CALL sys.ML_EXPLAIN_TABLE('ml_data.iris_test', @iris_model, 'ml_data.iris_explanations', JSON_OBJECT('prediction_explainer', 'permutation_importance'))；
+  CALL sys.ML_EXPLAIN_TABLE('ml_data.iris_test', @iris_model, 'ml_data.iris_explanations', JSON_OBJECT('prediction_explainer', 'permutation_importance'));
   ```
 
 4. ML_EXPLAIN_TABLEテーブルに対するクエリを実行して、結果を確認します。
@@ -158,19 +163,19 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
 
   この例では、HeatWave AutoMLでサポートされている多くのスコアリング指標の1つであるbalanced_accuracy指標を使用しています。
   ```
-  CALL sys.ML_SCORE('ml_data.iris_validate', 'class', @iris_model, 'balanced_accuracy', @score,null)；
+  CALL sys.ML_SCORE('ml_data.iris_validate', 'class', @iris_model, 'balanced_accuracy', @score,null);
   ```
 
 2. 計算されたスコアを取得するには、セッション変数 **@score** を参照します。
    ```
-   SELECT @score；
+   SELECT @score;
    ```
   出力例：
   ![iris-ml-score-model-out](./image/iris-ml-score-model-out.png)
 
 3. **ML_MODEL_UNLOAD** ルーチンを使用してモデルをアンロードします。
    ```
-   CALL sys.ML_MODEL_UNLOAD(@iris_model)；
+   CALL sys.ML_MODEL_UNLOAD(@iris_model);
    ```
 
   ***メモリ消費をしすぎないように、使い終わったらモデルをアンロードしてください***
