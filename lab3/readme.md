@@ -90,7 +90,7 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
     HEATWAVE-Client
     ```
   - コンパートメントに作成: **automl**
-  - 配置: **可溶性ドメイン**
+  - 配置: **可用性ドメイン**
   - セキュリティ: **保護インスタンス:無効**
 
   ![compute-create-security](./image/compute-create-security.png)
@@ -156,13 +156,17 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
     (RHEL8系のOSにディストリビューションされているMySQLモジュールを無効化してインストールします) 
    ```
    sudo yum install https://dev.mysql.com/get/mysql80-community-release-el8-4.noarch.rpm
+   ```
+   ```
    sudo yum module disable mysql
+   ```
+   ```
    sudo yum install mysql-shell
    ```
 
     ![mysql-install-shell](./image/mysql-install-shell.png)
 
-2. Cloud Shellウィンドウから、以下のコマンドを実行してコンピュートインスタンス経由でMySQL HeatWaveに接続します。
+3. Cloud Shellウィンドウから、以下のコマンドを実行してコンピュートインスタンス経由でMySQL HeatWaveに接続します。
    ```
    mysqlsh -uadmin -p -h <MySQL HeatWaveインスタンスのエンドポイントIPアドレス>
    ```
@@ -171,7 +175,7 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
 
     ![mysql-shell-first-connect](./image/mysql-shell-first-connect.png)
 
-3. 接続できたらスキーマ一覧を確認します。
+4. 接続できたらスキーマ一覧を確認します。
    ```
    \sql
    show databases;
