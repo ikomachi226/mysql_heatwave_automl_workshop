@@ -49,10 +49,10 @@
 
 ## タスク3: MySQL HeatWaveへの接続を行うためにセキュリティ・リストを設定する
 
-1. タスク2で作成したVCNの画面で[サブネット]-[プライベート・サブネット-heatwave-vcn]をクリックします。
+1. タスク2で作成したVCNの画面で[サブネット]-[プライベート・サブネット-HEATWAVE-VCN]をクリックします。
 ![vcn-details](./image/vcn-details.png)
 
-2. [セキュリティ・リスト]-[プライベート・サブネット-heatwave-vcnの **セキュリティ・リスト** ]をクリックします。
+2. [セキュリティ・リスト]-[プライベート・サブネット-HEATWAVE-VCNの **セキュリティ・リスト** ]をクリックします。
 ![vcn-security-list](./image/vcn-security-list.png)
 
 3. [イングレス・ルール]-[イングレス・ルールの追加]をクリックします。
@@ -78,9 +78,8 @@
 
 ## タスク4: HTTP接続を行うためにセキュリティ・リストを設定する
 1. OCIメニューから[ネットワーキング]-[仮想クラウド・ネットワーク]を選択します。
-2. [HeatWave-VCN]をクリックして詳細画面を開きます。
-3. [パブリック・サブネット-HeatWave-VCN]をクリックします。
-4. [Default Security List for HeatWave-VCN]をクリックします。
+2. [HEATWAVE-VCN]をクリックして詳細画面を開きます。
+4. [Default Security List for HEATWAVE-VCN]をクリックします。
 5. [イングレス・ルール］-［イングレス・ルールの追加］をクリックします。
   - ソースCIDR
   ```
