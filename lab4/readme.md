@@ -21,12 +21,12 @@ Python3はすでにコンピュートインスタンスにロードされてお�
 ## タスク1: HeatWave AutoMLを利用する準備を行います
 1. もしCloud Shellを終了している場合はCloud Shellを使ってコンピュートインスタンスにSSH接続します。
 ```
-ssh -i id_rsa opc@<コンピュートインスタンスのパブリックIPアドレス>
+ssh -i ~/.ssh/id_rsa opc@<コンピュートインスタンスのパブリックIPアドレス>
 ```
 
 2. MySQL Shellクライアントツールを使って、以下のコマンドでMySQLに接続します。
 ```
-mysqlsh -uadmin -p -h <MySQL HeatWaveのプライベートIPアドレス> -P3306 --sql
+mysqlsh -u <管理者ユーザ名> -p -h <MySQL HeatWaveのプライベートIPアドレス> -P3306 --sql
 ```
 
 ![heatwave-load-shell](./image/heatwave-load-shell.png)
