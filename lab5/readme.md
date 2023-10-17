@@ -1,4 +1,4 @@
-# (参考)PHPとHeatWave AutoMLを利用して簡単なアプリを作成する
+# PHPとHeatWave AutoMLを利用して簡単なアプリを作成する
 
 HeatWave AutoMLは、既存の開発作業に簡単に使用することができます。
 
@@ -69,7 +69,7 @@ HeatWave AutoMLは、既存の開発作業に簡単に使用することがで�
   7. エディタに以下のコードを追加し、ファイルを保存する (ctr + o) (ctrl + x)
   ```
   <?php
-  phpinfo()；
+  phpinfo();
   ?>
   ```
   8. ローカルマシンからinfo.phpページをブラウズし、PHP設定が読み込めることを確認します。
