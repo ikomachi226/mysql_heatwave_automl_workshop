@@ -115,4 +115,4 @@ config.phpファイルのデータベースIPをHeatwaveのデータベースIP�
 ![iris-web-php-result](./image/iris-web-php-result.png)
 
 
-[次のセクションへ](../lab6/readme.md)
+***[次のセクションへ](../lab6/readme.md)***
