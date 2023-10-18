@@ -148,9 +148,9 @@
 
     ***DB管理者になりますので失念するとDBにログインできません***
 
-      **- ユーザ名**
+      **- ユーザ名** (このワークショップでは`admin`を推奨)
   
-      **- パスワード**
+      **- パスワード** (このワークショップでは`Welcome#123`を推奨)
   
       **- パスワードの確認**
 
@@ -165,6 +165,8 @@
 ![mysql-create-network-ad](./image/mysql-create-network-ad.png)
 
 7. [配置の構成]で[AD-1]が選択され、[フォルト・ドメインの選択]はOFFになっていることを確認します。
+  
+  *[AD,FDについて](https://speakerdeck.com/ocise/oci-sabisuji-ben-qing-bao?slide=13)*
 
 8. [ハードウェアの構成]で以下の値を設定します。
 
