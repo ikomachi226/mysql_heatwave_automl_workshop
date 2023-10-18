@@ -31,4 +31,5 @@ Oracle Cloudからサインアウトした場合は、以下の手順で再サ�
 4. これでOracle Cloudにサインインできました。
 ![OCIログイン完了](./image/home-page.png)
 
-**準備ができたらはじめましょう！**
+
+[次のセクションへ](../lab1/readme.md)
