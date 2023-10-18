@@ -186,3 +186,6 @@
 ![mysql-detail-active](./image/mysql-detail-active.png)
 
 15. [HEATWAVE-DB]詳細画面-[リソース]メニュー-[エンドポイント]を選択し、IPアドレスが設定されていることを確認します。
+
+
+[次のセクションへ](../lab2/readme.md)
