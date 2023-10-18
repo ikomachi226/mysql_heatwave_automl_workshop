@@ -13,13 +13,14 @@
 5. [PARリクエストの作成]を選択する
 6. コンピュートインスタンスにCloud Shellでログインし、バケットに格納したファイルを取得する
   ```
-  $ wget https://objectstorage.ap-tokyo-1.oraclecloud.com/n/idazzjlcjqzj/b/xxxx.csv
+  $ wget https://objectstorage.ap-tokyo-1.oraclecloud.com/n/<ネームスペース>/b/<アップロードしたcsvファイル名>
   ```
 7. MySQL ShellでMySQL HeatWaveに接続する
   ```
-  mysqlsh -u<> -p -h<> --sql
+  mysqlsh -u<ユーザ名> -p -h<HeatWaveインスタンスのエンドポイント> --sql
   ```
-8. 新規にテーブルを作成する
+8. 新規にテーブルを作成する（DBは必要に応じて作成してください）
+
 9. 
   ```
   util.loadDump("/home/opc/tpch_100g", {dryRun: true, resetProgress:true, ignoreVersion:true, schema: "tpch_100g"})
