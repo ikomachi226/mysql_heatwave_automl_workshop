@@ -75,14 +75,17 @@
   ```
   3306,33060
   ```
+  *3306:MySQLサーバーのデフォルトのポート番号 33060: MySQL Xプロトコルのデフォルトのポート番号*
+
   - 説明
   ```
   MySQL Port Access
   ```
-![vcn-mysql-add-ingress](./image/vcn-mysql-add-ingress.png)
+  
+  ![vcn-mysql-add-ingress](./image/vcn-mysql-add-ingress.png)
 
 5. [プライベート・サブネット-heatwave-vcnのセキュリティリスト]画面の「イングレス・ルール」一覧に追加したイングレス・ルールが表示されます。
-![vcn-mysql-ingress-completed](./image/vcn-mysql-ingress-completed.png)
+  ![vcn-mysql-ingress-completed](./image/vcn-mysql-ingress-completed.png)
 
 ## タスク4: HTTP接続を行うためにセキュリティ・リストを設定する
 1. OCIメニューから[ネットワーキング]-[仮想クラウド・ネットワーク]を選択します。
@@ -97,6 +100,8 @@
   ```
   80,443
   ```
+  *80:HTTPのポート番号 443: HTTPSのポート番号*
+  
   - 説明
   ```
   Allow HTTP connections
