@@ -31,3 +31,6 @@ MySQL DBシステムには、クラスタ管理、HeatWaveクラスタへのデ�
 **補足資料**
 
 [OCI MySQL HeatWaveドキュメント](https://docs.oracle.com/en-us/iaas/mysql-database/doc/heatwave.html)
+
+
+[次のセクションへ](../lab3/readme.md)
