@@ -11,7 +11,7 @@ MySQL HeatWaveは、お客様のデータを潜在的な攻撃や脆弱性から
 
 ## タスク1: Cloud ShellからSSHキーを作成する
 
-Cloud ShellはBashシェルを実行する仮想マシンで、OCIコンソールからアクセスします。
+Cloud ShellはBashシェルを実行する仮想マシンで、OCIコンソールからアクセスできるWebブラウザベースのターミナルです。
 
 1. Cloud Sheを起動し、Bastion セッションで使用する SSH キーを生成します。
 
