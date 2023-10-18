@@ -10,7 +10,7 @@
 
 ルート・コンパートメントの下にコンパートメントを作成し、リソース管理目標に合致するようにクラウド・リソースを編成できます。
 
-[コンパートメントのイメージ](https://speakerdeck.com/ocise/oci-sabisuji-ben-qing-bao?slide=24)
+![img_compartment](./image/img_compartment.png)
 
 
 1. OCIメニューから[アイデンティティとセキュリティ]-[コンパートメント]を選択します。
