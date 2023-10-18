@@ -185,4 +185,4 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
 [HeatWave AutoML](https://dev.mysql.com/doc/heatwave/en/mys-hwaml-machine-learning.html)
 
 
-[次のセクションへ](../lab5/readme.md)
+***[次のセクションへ](../lab5/readme.md)***
