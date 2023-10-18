@@ -32,4 +32,4 @@ Oracle Cloudからサインアウトした場合は、以下の手順で再サ�
 ![OCIログイン完了](./image/home-page.png)
 
 
-[次のセクションへ](../lab1/readme.md)
+***[次のセクションへ](../lab1/readme.md)***
