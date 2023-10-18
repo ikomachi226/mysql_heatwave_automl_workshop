@@ -32,5 +32,8 @@
 
 ![compute-instance-stop-dialog](./image/compute-instance-stop-dialog.png)
 
+
+[次のセクションへ](../lab7/readme.md)
+
 ### (参考)コンパートメント配下のリソースを削除する
 ***未稿***
