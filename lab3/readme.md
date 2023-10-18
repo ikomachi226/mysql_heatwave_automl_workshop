@@ -148,7 +148,7 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
     ```
     ssh -i ~/.ssh/id_rsa opc@<コンピュートインスタンスのパブリックIPアドレス>
     ```
-    - **Are you sure you want to continue connecting (yes/no)?**　と聞かれたら **yes**を入力します
+    **`Are you sure you want to continue connecting (yes/no)?`**　と聞かれたら **`yes`**を入力します
 
     ![connect-first-signin](./image/connect-first-signin.png)
 
