@@ -17,7 +17,7 @@ Cloud ShellはBashシェルを実行する仮想マシンで、OCIコンソー�
 
 Oracle Cloud シェルを起動するには、Cloud コンソールに移動し、ページの右上にある[開発者ツール]アイコン-[Cloud Shell]をクリックします。
 
-**TeraTermやPuTTY等のSSH接続ツールも利用できます。接続方法については[ドキュメント](https://docs.oracle.com/ja-jp/iaas/Content/GSG/Tasks/testingconnection.htm)を参照してください*
+**TeraTermやPuTTY等のツールも利用できます。接続方法については[ドキュメント](https://docs.oracle.com/ja-jp/iaas/Content/GSG/Tasks/testingconnection.htm)を参照してください*
 
 ![cloud-shell](./image/cloud-shell.png)
 
