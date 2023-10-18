@@ -113,3 +113,6 @@ config.phpファイルのデータベースIPをHeatwaveのデータベースIP�
 
 6. テキスト・ボックスにテスト値を入力し（ページ内の例を使用できます）、 **Submit** ボタンを押すと予測結果が表示されます。
 ![iris-web-php-result](./image/iris-web-php-result.png)
+
+
+[次のセクションへ](../lab6/readme.md)
