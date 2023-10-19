@@ -100,8 +100,6 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
   - イメージ: **Oracle Linux8**
   - Shape: **VM.Standard.E4**
 
-  ![compute-create-image](./image/compute-create-image.png)
-
   - OCPU,メモリー量を以下のように変更します。
     
     ```
@@ -117,8 +115,6 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
     - **既存の仮想クラウド・ネットワークを選択: HEATWAVE-VCN**
     - **既存のサブネットを選択: パブリック・サブネット-HEATWAVE-VCN**
     - **パブリックIPv4アドレス: パブリックIPv4アドレスの自動割当て**
-
-    ![compute-create-networking](./image/compute-create-networking.png)
      
     ![compute-create-networking-select](./image/compute-create-networking-select.png)
 
@@ -133,7 +129,7 @@ lab1で起動したMySQL HeatWaveインスタンスに接続するためにコ�
 
   ![compute-provisioning](./image/compute-provisioning.png)
 
-6. コンピュートの詳細画面のステータスが[作成中]から[実行中]に変わると利用できるようになります。(これには数分かかります)
+6. コンピュートの詳細画面のステータスが[プロビジョニング中]から[実行中]に変わると利用できるようになります。(これには数分かかります)
 
   ![compute-active](./image/compute-active.png)
 
