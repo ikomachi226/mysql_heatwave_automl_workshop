@@ -36,7 +36,10 @@
 
 ![home-menu-networking-vcn](./image/home-menu-networking-vcn.png)
 
-2. [インターネット接続性を持つVCNの作成]を選択し[VCNウィザードの起動]をクリックします。
+2. [VCNウィザードの起動]をクリックして表示されるウィザード画面で[インターネット接続性を持つVCNの作成]を選択します。
+
+![vcn-wizard-launch](./image/vcn-wizard-launch.png)
+
 ![vcn-wizard-start](./image/vcn-wizard-start.png)
 
 3. 基本情報を入力し、[次]をクリックします。
