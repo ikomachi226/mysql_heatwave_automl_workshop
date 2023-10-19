@@ -26,7 +26,7 @@ Oracle Cloudからサインアウトした場合は、以下の手順で再サ�
 3. クラウドアカウントの認証情報を入力し、[Sign In]をクリックします。ユーザー名はメールアドレスです。パスワードはアカウント登録時に選択したものです。
 
 ***マルチファクタ認証の場合は、デバイスでの認証など必要に応じて操作してください。***
-***詳細はこちらを[参照](https://docs.oracle.com/en-us/iaas/Content/Identity/Tasks/usingmfa.htm)してください。***
+***詳細はこちらを[参照](https://docs.oracle.com/ja-jp/iaas/Content/Identity/Tasks/usingmfa.htm)してください。***
 ![OCIログイン](./image/cloud-login-tenant.png)
 ![sso-multi-factor-authentication](./image/sso-multi-factor-authentication.png)
 ![sso2-multi-factor-authentication](./image/sso2-multi-factor-authentication.png)
