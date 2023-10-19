@@ -133,8 +133,6 @@
   
     **- MySQL HeatWave**
 
-![mysql-create-option-develpment](./image/mysql-create-option-develpment.png)
-
 ![mysql-heatwave-system-selection](./image/mysql-heatwave-system-selection.png)
 
 5. [DBシステム情報の指定]で以下の情報を入力します。
@@ -186,26 +184,24 @@
 ![mysql-create-backup](./image/mysql-create-backup.png)
 
 10. [拡張オプションの設定]をクリックします。
-11. [ネットワーキング]タブでホスト名にDBシステム名と同じ名前を入力します。
+11. [接続]タブでホスト名にDBシステム名と同じ名前を入力します。
     - ホスト名
     ```
     HEATWAVE-DB
     ```
 ![mysql-create-advanced](./image/mysql-create-advanced.png)
 
-12. [DBシステムの作成]画面の入力内容を確認し、[作成]ボタンをクリックします。
-
-![mysql-create](./image/mysql-create.png)
+12. [DBシステムの作成]画面の入力内容を確認し、画面下部の[作成]ボタンをクリックします。
 
 13. 作成したDBシステムの詳細画面に遷移します。この時のステータスは[作成中]になっています。
-
-![mysql-create-in-progress](./image/mysql-create-in-progress.png)
 
 14. プロビジョニングが終了すると、ステータスが[アクティブ]になります。
 
 ![mysql-detail-active](./image/mysql-detail-active.png)
 
 15. [HEATWAVE-DB]詳細画面-[リソース]メニュー-[エンドポイント]を選択し、IPアドレスが設定されていることを確認します。
+
+![mysql-detail-endpoint](./image/mysql-detail-endpoint.png)
 
 
 ***[次のセクションへ](../lab2/readme.md)***
