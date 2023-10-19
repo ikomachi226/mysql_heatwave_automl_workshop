@@ -93,7 +93,10 @@
 1. OCIメニューから[ネットワーキング]-[仮想クラウド・ネットワーク]を選択します。
 2. [HEATWAVE-VCN]をクリックして詳細画面を開きます。
 4. [Default Security List for HEATWAVE-VCN]をクリックします。
+   ![vcn-http-securitylist](./image/vcn-http-securitylist.png)
 5. [イングレス・ルール］-［イングレス・ルールの追加］をクリックします。
+   ![vcn-default-securitylist](./image/vcn-default-securitylist.png)
+
   - ソースCIDR
   ```
   0.0.0.0/0
