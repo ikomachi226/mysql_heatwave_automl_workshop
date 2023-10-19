@@ -14,7 +14,7 @@ MySQL DBシステムには、クラスタ管理、HeatWaveクラスタへのデ�
 
 ![navigation-mysql-with-instance](./image/navigation-mysql-with-instance.png)
 
-3. [HEATWAVE-DB]の詳細画面で[その他のアクション]-[HeatWaveクラスタの編集]を選択します。
+3. [HEATWAVE-DB]の詳細画面で[その他のアクション]-[HeatWaveクラスタの追加]を選択します。
 
 ![mysql-more-actions-add-cluster](./image/mysql-more-actions-add-cluster.png)
 
