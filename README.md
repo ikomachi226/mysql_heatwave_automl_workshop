@@ -58,14 +58,10 @@ Irisの分類：
 
 ## Lab 4 - [HeatWave AutoMLで機械学習モデルを生成する](./lab4/readme.md)
 
-## Lab 5 - [(参考)MySQL HeatWaveを利用したPHPを作成する](./lab5/readme.md)
+## Lab 5 - [MySQL HeatWaveを利用したPHPアプリケーションを作成する](./lab5/readme.md)
 
 ## Lab 6 - [OCIサービスを停止する](./lab6/readme.md)
 
-## Lab 7 - [(参考)その他のHeatWave AutoML利用例]
-### Lab7-1 - 分類
-### Lab7-2 - 回帰
-### Lab7-3 - 時系列予測
-### Lab7-4 - 教師なし異常検知
-### Lab7-5 - レコメンド
+## Lab 7 - [その他の機械学習モデル作成]
+
 
