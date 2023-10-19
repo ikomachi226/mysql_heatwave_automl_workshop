@@ -16,6 +16,7 @@
 1. OCIメニューから[アイデンティティとセキュリティ]-[コンパートメント]を選択します。
    ![home-menu-compartment](./image/home-menu-compartment.png)
 2. [コンパートメント]画面で[コンパートメントの作成]をクリックします。
+   ![compartment-create-button](./image/compartment-create-button.png)
 3. [コンパートメントの作成]ダイアログで[名前][説明]を入力します。
 
   - 名前
