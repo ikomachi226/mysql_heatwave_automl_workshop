@@ -32,7 +32,7 @@
 
 ## タスク2: 仮想ネットワーク(VCN)を作成する
 1. OCIメニューから[ネットワーキング]-[仮想クラウド・ネットワーク]を選択します。
-![homepage](./image/homepage.png)
+![navigator-menu](./image/navigator-menu.png)
 
 ![home-menu-networking-vcn](./image/home-menu-networking-vcn.png)
 
