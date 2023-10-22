@@ -6,7 +6,9 @@
 
 HeatWave AutoMLではどちらの場合もレコメンデーションモデルを作成することができます。
 
-*暗黙的なデータを基にモデルを作成するには`8.0.34-u4-cloud`にアップグレードされている必要があります
+*暗黙的なデータを基にモデルを作成するには`8.0.34-u4-cloud`にアップグレードされている必要があります。
+
+*[デモ動画](https://youtu.be/cNqo-5OMPpg?si=0q9TlqQrNIw7A2wk)がYouTubeで公開されています。
 
 ## タスク1: データを準備する
 1. CSVファイルをダウンロードして、オブジェクト・ストレージに格納します。
@@ -59,13 +61,13 @@ ml trainを呼び出し、入力データとしてテーブルの名前を与え
 
 1. モデル名を指定してML_TRAINルーチンを実行します。この時使用するカラム名とモデル種類を指定します。
 
-  - テーブル名: mlcorpus.ml-100k_train
-  - カラム名: rating
-  - オプション:
+- テーブル名: mlcorpus.ml-100k_train
+- カラム名: rating
+- オプション:
     - タスク: recommendation
     - ユーザーIDカラム名: user_id
     - アイテムIDカラム名: item_id
-  - モデルハンドル: @model_explicit
+- モデルハンドル: @model_explicit
 
 ```sql
 set @model_explicit = "model_explicit";
@@ -104,10 +106,10 @@ SELECT * FROM item_recommendations LIMIT 5;
 ```
 
 5. 次にアイテムを好むユーザー上位3件のレコメンドを生成してみます。
-  - 対象テーブル名: mlcorpus.ml-100k
-  - 対象モデル: @model_explicit
-  - 出力テーブル名: mlcorpus.item_recommendations
-  - レコメンドオプション: "users", "topk", 3
+- 対象テーブル名: mlcorpus.ml-100k
+- 対象モデル: @model_explicit
+- 出力テーブル名: mlcorpus.item_recommendations
+- レコメンドオプション: "users", "topk", 3
 
 ```sql
 #アイテムに対するtopKレコメンドを生成し、出力結果を5件確認
@@ -127,13 +129,6 @@ SELECT * FROM user_recommendations LIMIT 5;
 タスク2で使用したデータは明示的データですが、ここでは評価データをバイナライズすることで暗黙的データに変換してモデルを作成してみます。
 
 ***この手順を実行するには8.0.34-u4-cloudにアップグレードされている必要があります***
-どのリンクをクリックしたのか、どのビデオを見たのか、特定のページにどれだけの時間を費やしたのかを保存することができる。
-これは暗黙のフィードバックと呼ばれるもので、より豊富である。
-これはユーザーとサービスとのインタラクションから間接的に収集され、ユーザーの好みの代理として機能する。
-そのため、このタイプの暗黙のフィードバックを使ってレコメンダーシステムを構築することができ、クリックやインタラクションごとにリアルタイムでレコメンデーションを調整することができる。
-ムービーレンズのデータセットは明示的フィードバックです。
-しかし、レーティングを2値化することで暗黙的フィードバックに変換することができ、直接次のように変換することができる。
-インタラクションは、ユーザーが映画とインタラクションしたことを表します。
 
 1. 既存テーブルを基に暗黙的データを擬似的に作成します。ここでは`interaction`カラムを追加して、評価が1以上のデータをユーザーが何かしらの行動を起こした映画と想定してデータとして用いています。
 
@@ -157,10 +152,10 @@ INSERT INTO `ml-100k_test_implicit` SELECT * FROM `ml-100k_train_implicit` limit
 SELECT * from `ml-100k_test_implicit` limit 10;
 ```
 2. 作成したデータからモデルを作成します。
-   - 対象テーブル名: mlcorpus.ml-100k_train_implicit
-   - 対象カラム名: interaction
-   - レコメンドオプション: 'task', 'recommendation', 'users', 'user_id', 'items', 'item_id', 'feedback', 'implicit'
-   - モデルハンドル: @model_implicit
+- 対象テーブル名: mlcorpus.ml-100k_train_implicit
+- 対象カラム名: interaction
+- レコメンドオプション: 'task', 'recommendation', 'users', 'user_id', 'items', 'item_id', 'feedback', 'implicit'
+- モデルハンドル: @model_implicit
 
     ```sql
     set @model_implicit = "model_implicit";
