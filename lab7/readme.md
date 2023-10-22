@@ -9,6 +9,7 @@ lab4で作成した機械学習モデルはアヤメの分類モデルですが�
 それぞれのモデルを作成するには、ML_TRAIN()ルーチンのパラメタ指定を変更することで可能です。ルーチンの実行プロセスを変更する必要はありません。
 
 **ML_TRAINで指定できるオプション(8.1.0/8.0.34以降)**
+
 ```
 mysql> CALL sys.ML_TRAIN ('table_name', 'target_column_name', [options], model_handle);
  
@@ -33,8 +34,9 @@ options: {
 
 ***MySQL HeatWaveバージョンによって指定できるオプションが異なります。詳細は[ドキュメント](https://dev.mysql.com/doc/heatwave/en/mys-hwaml-ml-train.html)を参照してください。***
 
-### データファイル(.csv)の利用方法
+### データファイル(csv)のOCIオブジェクト・ストレージへの格納例
 1. GitHubから該当のCSVファイルをダウンロードします。
+
 2. OCIコンソールのメニューから[ストレージ]-[バケット]を選択します。
    ![bucket_menu](./image/bucket_menu.png)
    
@@ -54,5 +56,12 @@ options: {
   $ wget https://objectstorage.ap-tokyo-1.oraclecloud.com/n/<ネームスペース>/b/<アップロードしたcsvファイル名>
   ```
 
-各モデルの作成方法
+8. MySQL HeatWave上で該当のcsvデータを格納するスキーマ/テーブルを作成し、MySQL Shellの[テーブルインポートユーティリティ](https://dev.mysql.com/doc/mysql-shell/8.0/ja/mysql-shell-utilities-parallel-table.html))でデータをロードする。
+  ```
+  importTable ({file_name | file_list}, options)
+  ```
+
+### モデルの作成例
 [レコメンデーションモデルの作成](./recommendation.md)
+
+[性能ベンチマークの使用データ](https://github.com/oracle-samples/heatwave-ml)
