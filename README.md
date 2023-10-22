@@ -62,6 +62,6 @@ Irisの分類：
 
 ## Lab 6 - [OCIサービスを停止する](./lab6/readme.md)
 
-## Lab 7 - [その他の機械学習モデル作成](./lab7/readme.md)
+## Lab 7 - [HeatWave AutoMLで作成できる機械学習モデル](./lab7/readme.md)
 
 
