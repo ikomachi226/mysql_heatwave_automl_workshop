@@ -6,6 +6,7 @@ MySQL DBシステムには、クラスタ管理、HeatWaveクラスタへのデ�
 
 このセクションでは、lab1で起動したMySQL HeatWaveインスタンスへHeatWaveクラスタの追加を行います。
 
+**MySQL HeatWaveアーキテクチャ（Oracleドキュメントから抜粋）**
 ![mysql-heatwave-architecture](./image/mysql-heatwave-architecture.png)
 
 ## タスク１: HEATWAVE-DBにHeatWaveクラスタを追加する
