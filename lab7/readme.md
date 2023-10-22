@@ -1,12 +1,12 @@
 # (参考)HeatWave AutoMLで作成できる機械学習モデル
 lab4で作成した機械学習モデルはアヤメの分類モデルですが、他の種類のモデルも作成することができます。
 
-** HeatWave AutoMLで作成できる機械学習モデル(2023年10月現在) **
+**HeatWave AutoMLで作成できる機械学習モデル(2023年10月現在)**
 ![kindof_model](./image/kindof_model.png)
 
 それぞれのモデルを作成するには、ML_TRAIN()ルーチンのパラメタ指定を変更することで可能です。ルーチンの実行プロセスを変更する必要はありません。
 
-** ML_TRAINで指定できるオプション(8.1.0/8.0.34以降) **
+**ML_TRAINで指定できるオプション(8.1.0/8.0.34以降)**
 ```
 mysql> CALL sys.ML_TRAIN ('table_name', 'target_column_name', [options], model_handle);
  
@@ -29,7 +29,7 @@ options: {
 }
 ```
 
-*** MySQL HeatWaveバージョンによって指定できるオプションが異なります。詳細は[ドキュメント](https://dev.mysql.com/doc/heatwave/en/mys-hwaml-ml-train.html)を参照してください。 ***
+***MySQL HeatWaveバージョンによって指定できるオプションが異なります。詳細は[ドキュメント](https://dev.mysql.com/doc/heatwave/en/mys-hwaml-ml-train.html)を参照してください。***
 
 ### データファイル(.csv)の利用方法
 1. GitHubから該当のCSVファイルをダウンロードします。
