@@ -41,8 +41,8 @@ util.importTable("ml-100k_test.csv",{table: "ml-100k_test", dialect: "csv-unix",
 \sql
 CREATE TABLE `ml-100k`LIKE `ml-100k_test`;
 INSERT INTO `ml-100k`
-Select * from `ml-100k_test` limit 5;
-select * from `ml-100k_train` limit 10;
+SELECT * FROM `ml-100k_test` LIMIT 5;
+SELECT * FROM `ml-100k_train` LIMIT 10;
 ```
 
 ## タスク2: 明示的データからモデルを作成する(explicit)
@@ -60,14 +60,11 @@ ml trainを呼び出し、入力データとしてテーブルの名前を与え
 1. モデル名を指定してML_TRAINルーチンを実行します。この時使用するカラム名とモデル種類を指定します。
 
   - テーブル名: mlcorpus.ml-100k_train
-
   - カラム名: rating
-
   - オプション:
     - タスク: recommendation
     - ユーザーIDカラム名: user_id
     - アイテムIDカラム名: item_id
-
   - モデルハンドル: @model_explicit
 
 ```sql
@@ -77,7 +74,7 @@ set @model_explicit = "model_explicit";
 CALL sys.ML_TRAIN('mlcorpus.`ml-100k_train`', 'rating', JSON_OBJECT('task', 'recommendation', 'users', 'user_id', 'items', 'item_id'), @model_explicit);
 ```
 
-2. 作成したモデルをロードしてします。
+2. 作成したモデルをロードします。
 ```sql
 #作成したモデル`@model_explicit`をロード
 CALL sys.ML_MODEL_LOAD(@model_explicit, NULL);
@@ -85,58 +82,51 @@ CALL sys.ML_MODEL_LOAD(@model_explicit, NULL);
 
 3. 作成したモデルを使用してレコメンドを生成します。
   - 対象テーブル名: mlcorpus.ml-100k
-  - モデル名: @model_explicit
+  - 対象モデル: @model_explicit
   - 出力テーブル名: mlcorpus.rating_predictions
 
 ```sql
 #作成したモデルを基にレコメンドを生成し、出力結果を5件確認
 CALL sys.ML_PREDICT_TABLE('mlcorpus.`ml-100k`', @model_explicit, 'mlcorpus.`rating_predictions`', NULL);
-select * from rating_predictions limit 5;
+SELECT * FROM rating_predictions LIMIT 5;
 ```
 
 4. レコメンド・システムのオプションを指定するとより詳細なレコメンドを生成することができます。次にユーザーが好むアイテム上位3件のレコメンドを生成してみます。
   - 対象テーブル名: mlcorpus.ml-100k
-  - モデル名: @model_explicit
+  - 対象モデル: @model_explicit
   - 出力テーブル名: mlcorpus.item_recommendations
   - レコメンドオプション: "items", "topk", 3
 
 ```sql
 #ユーザーに対するtopKレコメンドを生成し、出力結果を5件確認
 CALL sys.ML_PREDICT_TABLE('mlcorpus.`ml-100k`', @model_explicit, 'mlcorpus.`item_recommendations`',  JSON_OBJECT("recommend", "items", "topk", 3));
-select * from item_recommendations limit 5;
+SELECT * FROM item_recommendations LIMIT 5;
 ```
 
 5. 次にアイテムを好むユーザー上位3件のレコメンドを生成してみます。
   - 対象テーブル名: mlcorpus.ml-100k
-  - モデル名: @model_explicit
+  - 対象モデル: @model_explicit
   - 出力テーブル名: mlcorpus.item_recommendations
   - レコメンドオプション: "users", "topk", 3
 
 ```sql
 #アイテムに対するtopKレコメンドを生成し、出力結果を5件確認
 CALL sys.ML_PREDICT_TABLE('mlcorpus.`ml-100k`', @model_explicit, 'mlcorpus.`user_recommendations`',  JSON_OBJECT("recommend", "users", "topk", 3));
-select * from user_recommendations limit 5;
+SELECT * FROM user_recommendations LIMIT 5;
 ```
-
-このモデルを使うには、ml model loadを使ってHeatWaveクラスタにロードする必要がある。
-予測は出力テーブルに保存されます。
-テーブルの出力を見てみると、各ユーザのアイテムのペアに対して、モデルによって出力されたレーティングがあることがわかります。
-しかし、我々はレコメンダー・システムを使用しているので、我々がしたいことは、与えられたユーザーにアイテムを推薦することです。
-ですから、同じ予測テーブルでそれを行うことができます。
-しかし、アイテムを推薦するオプションを指定する必要があります。
-アイテムは3つ欲しい。
-結果テーブルを見てみましょう。
-各ユーザーについて、モデルによって推薦された上位3つのアイテムと、それに対応するレーティングがあります。
 
 映画についても同じことができ、各映画について、モデルがその映画を好きだと思う上位3人のユーザーを推薦することができる。
 そして、各項目について上位3人のユーザーとそれに対応するレーティングを持つ同じ表が得られる。
 このような明示的なフィードバックデータの問題点は、非常に稀であるということです。
 
 ## タスク3: 暗黙的データからモデルを作成する(implicit)
-***この手順を実行するには8.0.34-u4-cloudにアップグレードされている必要があります***
+ユーザーのフィードバックなど明示的データを取得するよりも、リンクのクリック履歴や映画の視聴履歴、サイトの滞在時間などユーザーの行動を検出・監視することが容易なケースがあります。
 
-ユーザーから直接フィードバックを得るのは容易ではない。
-一方、ユーザーの行動はより簡単にモニターできる。
+これらは暗黙的データと呼ばれ、このデータを基にレコメンド・システムを生成することができます。
+
+タスク2で使用したデータは明示的データですが、ここでは評価データをバイナライズすることで暗黙的データに変換してモデルを作成してみます。
+
+***この手順を実行するには8.0.34-u4-cloudにアップグレードされている必要があります***
 どのリンクをクリックしたのか、どのビデオを見たのか、特定のページにどれだけの時間を費やしたのかを保存することができる。
 これは暗黙のフィードバックと呼ばれるもので、より豊富である。
 これはユーザーとサービスとのインタラクションから間接的に収集され、ユーザーの好みの代理として機能する。
@@ -145,15 +135,46 @@ select * from user_recommendations limit 5;
 しかし、レーティングを2値化することで暗黙的フィードバックに変換することができ、直接次のように変換することができる。
 インタラクションは、ユーザーが映画とインタラクションしたことを表します。
 
-評価ではなく、暗黙のフィードバックによってデータがどのようになるかを見てみましょう。
-相互作用があります。
-したがって、このようなデータでモデルを構築するために、暗黙のフィードバックでモデルを構築することもできます。
-必要なことは、新しいテーブル名を指定し、ML trainの呼び出しで指定するだけです。
-また、feedbackをimplicitと指定することで、入力データがimplicit feedbackのカテゴリであることを指定する必要があります。
-これにより、暗黙的フィードバックモデルをトレーニングすることができ、トレーニングが終了したら、モデルをHeatwaveクラスタにロードすることができます。
-以前と同じように。
-そして、この新しい暗黙的フィードバックモデルを使って予測や推薦を行うことができる。
-出力表を見ると、前のものとよく似ている。
-しかし、各ユーザーに上位3つのアイテムを推薦するために、相互作用の列を使用しています。
+1. 既存テーブルを基に暗黙的データを擬似的に作成します。ここでは`interaction`カラムを追加して、評価が1以上のデータをユーザーが何かしらの行動を起こした映画と想定してデータとして用いています。
 
+```sql
+#ml-100k_trainを基にml-100k_train_implicitテーブルを作成
+CREATE TABLE `ml-100k_train_implicit`LIKE `ml-100k_train`;
 
+#ml-100k_train_implicitテーブルにinteractionカラムを追加
+ALTER TABLE `ml-100k_train_implicit` ADD interaction INT;
+
+#ml-100k_train_implicitテーブルにデータを格納
+INSERT INTO `ml-100k_train_implicit` SELECT *, rating > 0 AS interaction FROM `ml-100k_train`;
+
+#レコメンドを生成するテーブルとしてml-100k_train_implicitを複製
+CREATE TABLE `ml-100k_test_implicit`LIKE `ml-100k_train_implicit`;
+
+#ml-100k_test_implicitテーブルにデータを格納
+INSERT INTO `ml-100k_test_implicit` SELECT * FROM `ml-100k_train_implicit` limit 5;
+
+#ml-100k_test_implicitテーブルのデータを確認
+SELECT * from `ml-100k_test_implicit` limit 10;
+```
+2. 作成したデータからモデルを作成します。
+   - 対象テーブル名: mlcorpus.ml-100k_train_implicit
+   - 対象カラム名: interaction
+   - レコメンドオプション: 'task', 'recommendation', 'users', 'user_id', 'items', 'item_id', 'feedback', 'implicit'
+   - モデルハンドル: @model_implicit
+
+    ```sql
+    set @model_implicit = "model_implicit";
+
+    CALL sys.ML_TRAIN('mlcorpus.`ml-100k_train_implicit`', 'interaction', JSON_OBJECT('task', 'recommendation', 'users', 'user_id', 'items', 'item_id', 'feedback',     'implicit'), @model_implicit);
+    ```
+
+3. 作成したモデルをロードしてレコメンドを生成します。
+   ```sql
+   #モデルのロード
+   CALL sys.ML_MODEL_LOAD(@model_implicit, NULL);
+
+   #ユーザーに対するtopKレコメンドを生成し、出力結果を5件確認
+   CALL sys.ML_PREDICT_TABLE('mlcorpus.`ml-100k_test_implicit`', @model_implicit, 'mlcorpus.`item_recommendations_implicit`', JSON_OBJECT("recommend", "items", "topk", 3));
+   
+    SELECT * FROM item_recommendations_implicit LIMIT 5;
+    ```
