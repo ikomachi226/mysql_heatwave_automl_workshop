@@ -1,6 +1,8 @@
 # (参考)HeatWave AutoMLで作成できる機械学習モデル
 lab4で作成した機械学習モデルはアヤメの分類モデルですが、他の種類のモデルも作成することができます。
 
+また、MySQL HeatWaveに格納したデータだけではなく、オブジェクト・ストレージに格納したデータ(csv,parquet)を利用することができます。
+
 **HeatWave AutoMLで作成できる機械学習モデル(2023年10月現在)**
 ![kindof_model](./image/kindof_model.png)
 
