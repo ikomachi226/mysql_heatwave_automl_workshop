@@ -46,6 +46,7 @@ INSERT INTO `ml-100k`
 SELECT * FROM `ml-100k_test` LIMIT 5;
 SELECT * FROM `ml-100k_train` LIMIT 10;
 ```
+![ml-100k_train](./image/ml-100k_train.png)
 
 ## タスク2: 明示的データからモデルを作成する(explicit)
 基となるアンケートで収集したユーザーのフィードバック(1〜5)に基づいて定量化された情報からおすすめする映画を抽出します。
@@ -76,6 +77,8 @@ set @model_explicit = "model_explicit";
 CALL sys.ML_TRAIN('mlcorpus.`ml-100k_train`', 'rating', JSON_OBJECT('task', 'recommendation', 'users', 'user_id', 'items', 'item_id'), @model_explicit);
 ```
 
+![explicit_train](./image/explicit_train.png)
+
 2. 作成したモデルをロードします。
 ```sql
 #作成したモデル`@model_explicit`をロード
@@ -92,6 +95,7 @@ CALL sys.ML_MODEL_LOAD(@model_explicit, NULL);
 CALL sys.ML_PREDICT_TABLE('mlcorpus.`ml-100k`', @model_explicit, 'mlcorpus.`rating_predictions`', NULL);
 SELECT * FROM rating_predictions LIMIT 5;
 ```
+![explicit_predict1](./image/explicit_predict1.png)
 
 4. レコメンド・システムのオプションを指定するとより詳細なレコメンドを生成することができます。次にユーザーが好むアイテム上位3件のレコメンドを生成してみます。
   - 対象テーブル名: mlcorpus.ml-100k
@@ -105,7 +109,9 @@ CALL sys.ML_PREDICT_TABLE('mlcorpus.`ml-100k`', @model_explicit, 'mlcorpus.`item
 SELECT * FROM item_recommendations LIMIT 5;
 ```
 
-5. 次にアイテムを好むユーザー上位3件のレコメンドを生成してみます。
+![explicit_predict2](./image/explicit_predict2.png)
+
+5. 次にアイテムを好むユーザー上位3件のレコメンドを生成してみます。それぞれの映画について、機械学習モデルがその映画を好きだと思う上位3人のユーザーと評価レートを得ることができます。
 - 対象テーブル名: mlcorpus.ml-100k
 - 対象モデル: @model_explicit
 - 出力テーブル名: mlcorpus.item_recommendations
@@ -117,9 +123,8 @@ CALL sys.ML_PREDICT_TABLE('mlcorpus.`ml-100k`', @model_explicit, 'mlcorpus.`user
 SELECT * FROM user_recommendations LIMIT 5;
 ```
 
-映画についても同じことができ、各映画について、モデルがその映画を好きだと思う上位3人のユーザーを推薦することができる。
-そして、各項目について上位3人のユーザーとそれに対応するレーティングを持つ同じ表が得られる。
-このような明示的なフィードバックデータの問題点は、非常に稀であるということです。
+![explicit_predict3](./image/explicit_predict3.png)
+
 
 ## タスク3: 暗黙的データからモデルを作成する(implicit)
 ユーザーのフィードバックなど明示的データを取得するよりも、リンクのクリック履歴や映画の視聴履歴、サイトの滞在時間などユーザーの行動を検出・監視することが容易なケースがあります。
@@ -142,15 +147,18 @@ ALTER TABLE `ml-100k_train_implicit` ADD interaction INT;
 #ml-100k_train_implicitテーブルにデータを格納
 INSERT INTO `ml-100k_train_implicit` SELECT *, rating > 0 AS interaction FROM `ml-100k_train`;
 
-#レコメンドを生成するテーブルとしてml-100k_train_implicitを複製
-CREATE TABLE `ml-100k_test_implicit`LIKE `ml-100k_train_implicit`;
+#レコメンドを生成するテーブルをml-100k_train_implicitから複製して作成
+CREATE TABLE `ml-100k_implicit`LIKE `ml-100k_train_implicit`;
 
 #ml-100k_test_implicitテーブルにデータを格納
-INSERT INTO `ml-100k_test_implicit` SELECT * FROM `ml-100k_train_implicit` limit 5;
+INSERT INTO `ml-100k_implicit` SELECT * FROM `ml-100k_train_implicit` limit 5;
 
 #ml-100k_test_implicitテーブルのデータを確認
-SELECT * from `ml-100k_test_implicit` limit 10;
+SELECT * from `ml-100k_implicit` limit 10;
 ```
+
+![ml-100k_train_implict](./image/ml-100k_train_implict.png)
+
 2. 作成したデータからモデルを作成します。
 - 対象テーブル名: mlcorpus.ml-100k_train_implicit
 - 対象カラム名: interaction
@@ -163,13 +171,22 @@ SELECT * from `ml-100k_test_implicit` limit 10;
     CALL sys.ML_TRAIN('mlcorpus.`ml-100k_train_implicit`', 'interaction', JSON_OBJECT('task', 'recommendation', 'users', 'user_id', 'items', 'item_id', 'feedback',     'implicit'), @model_implicit);
     ```
 
+![implicit_train](./image/implicit_train.png)
+
 3. 作成したモデルをロードしてレコメンドを生成します。
+- 対象テーブル名: mlcorpus.ml-100k_implicit
+- モデルハンドル: @model_implicit
+- 出力テーブル名: mlcorpus.item_recommendations_implicit
+- レコメンドオプション: "recommend", "items", "topk", 3
+
    ```sql
    #モデルのロード
    CALL sys.ML_MODEL_LOAD(@model_implicit, NULL);
 
    #ユーザーに対するtopKレコメンドを生成し、出力結果を5件確認
-   CALL sys.ML_PREDICT_TABLE('mlcorpus.`ml-100k_test_implicit`', @model_implicit, 'mlcorpus.`item_recommendations_implicit`', JSON_OBJECT("recommend", "items", "topk", 3));
+   CALL sys.ML_PREDICT_TABLE('mlcorpus.`ml-100k_implicit`', @model_implicit, 'mlcorpus.`item_recommendations_implicit`', JSON_OBJECT("recommend", "items", "topk", 3));
    
     SELECT * FROM item_recommendations_implicit LIMIT 5;
     ```
+
+![implicit_predict](./image/implicit_predict.png)
