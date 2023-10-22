@@ -62,6 +62,6 @@ options: {
   ```
 
 ### モデルの作成例
-[レコメンデーションモデルの作成](./recommendation.md)
+[レコメンド・モデルの作成](./recommendation.md)
 
 [性能ベンチマークの使用データ](https://github.com/oracle-samples/heatwave-ml)
