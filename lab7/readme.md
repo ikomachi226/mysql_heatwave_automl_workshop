@@ -1,4 +1,35 @@
-# (参考)その他のHeatWave AutoML利用例
+# (参考)HeatWave AutoMLで作成できる機械学習モデル
+lab4で作成した機械学習モデルはアヤメの分類モデルですが、他の種類のモデルも作成することができます。
+
+** HeatWave AutoMLで作成できる機械学習モデル(2023年10月現在) **
+![kindof_model](./image/kindof_model.png)
+
+それぞれのモデルを作成するには、ML_TRAIN()ルーチンのパラメタ指定を変更することで可能です。ルーチンの実行プロセスを変更する必要はありません。
+
+** ML_TRAINで指定できるオプション(8.1.0/8.0.34以降) **
+```
+mysql> CALL sys.ML_TRAIN ('table_name', 'target_column_name', [options], model_handle);
+ 
+options: {
+    JSON_OBJECT('key','value'[,'key','value'] ...)
+        'key','value':
+        |'task', {'classification'|'regression'|'forecasting'|'anomaly_detection'|'recommendation'}|NULL
+        |'datetime_index', 'column'
+        |'endogenous_variables', JSON_ARRAY('column'[,'column'] ...)
+        |'exogenous_variables', JSON_ARRAY('column'[,'column'] ...)
+        |'model_list', JSON_ARRAY('model'[,'model'] ...)
+        |'exclude_model_list', JSON_ARRAY('model'[,'model'] ...)
+        |'optimization_metric', 'metric'
+        |'include_column_list', JSON_ARRAY('column'[,'column'] ...)
+        |'exclude_column_list', JSON_ARRAY('column'[,'column'] ...)
+        |'contamination',  'contamination factor'
+        |'users', 'users_column'
+        |'items', 'items_column'
+        |'notes', 'notes_text'
+}
+```
+
+*** MySQL HeatWaveバージョンによって指定できるオプションが異なります。詳細は[ドキュメント](https://dev.mysql.com/doc/heatwave/en/mys-hwaml-ml-train.html)を参照してください。 ***
 
 ### データファイル(.csv)の利用方法
 1. GitHubから該当のCSVファイルをダウンロードします。
@@ -20,58 +51,6 @@
   ```
   $ wget https://objectstorage.ap-tokyo-1.oraclecloud.com/n/<ネームスペース>/b/<アップロードしたcsvファイル名>
   ```
-7. MySQL ShellでMySQL HeatWaveに接続します。
-  ```
-  mysqlsh -u<ユーザ名> -p -h<HeatWaveインスタンスのエンドポイント> --sql
-  ```
-8. データを格納するテーブルを作成します。（DBは必要に応じて作成してください）
 
-9. MySQLにデータを格納します。
-  ```
-  util.loadDump("/home/opc/tpch_100g", {dryRun: true, resetProgress:true, ignoreVersion:true, schema: "tpch_100g"})
-  ```
-
-### 分類
-#### データ
-  - XXXX.csv
-  - XXXX.csv
-#### モデルの生成
-  ```
-  CALL sys.ML_TRAIN('XXXX', 'xxxx', JSON_OBJECT('task', 'xxxx'), @model_xxxx);
-  ```
-
-### 回帰
-#### ダイアモンドの価格予測
-#### データ
-  - diamond-train.csv
-  - diamond-test.csv
-#### モデルの生成
-  ```
-  CALL sys.ML_TRAIN('heatwaveml_bench.diamonds_train', 'price', JSON_OBJECT('task', 'regression'), @model_diamonds);
-  ```
-
-### 時系列予測
-#### データ
-  - XXXX.csv
-  - XXXX.csv
-#### モデルの生成
-  ```
-  CALL sys.ML_TRAIN('XXXX', 'xxxx', JSON_OBJECT('task', 'xxxx'), @model_xxxx);
-  ```
-
-### 異常検知
-#### データ
-  - XXXX.csv
-  - XXXX.csv
-#### モデルの生成
-  ```
-  CALL sys.ML_TRAIN('XXXX', 'xxxx', JSON_OBJECT('task', 'xxxx'), @model_xxxx);
-  ```
-### レコメンド
-#### データ
-  - XXXX.csv
-  - XXXX.csv
-#### モデルの生成
-  ```
-  CALL sys.ML_TRAIN('XXXX', 'xxxx', JSON_OBJECT('task', 'xxxx'), @model_xxxx);
-  ```
+各モデルの作成方法
+[レコメンデーションモデルの作成](./recommendation.md)
