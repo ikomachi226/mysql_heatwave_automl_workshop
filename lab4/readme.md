@@ -66,7 +66,7 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
 
     ![show-ml-data](./image/show-ml-data.png)
 
-## タスク3:　機械学習モデルのトレーニングを行う(分類)
+## タスク3: 機械学習モデルのトレーニングを行う(分類)
 1. **ML_TRAIN**ルーチンを実行してモデルのトレーニングを行います。
    ```
    CALL sys.ML_TRAIN('ml_data.iris_train', 'class',JSON_OBJECT('task', 'classification'), @iris_model);
@@ -93,7 +93,7 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
    出力例: 
    ![iris-ml-build-out](./image/iris-ml-build-out.png)
 
-## タスク4:　 単一データに対する予測と説明
+## タスク4:　単一データに対する予測と説明
 1. **ML_PREDICT_ROW**ルーチンを使って、1行のデータに対する予測を行います。
 
   - この例では、データが **@row_input** セッション変数に代入され、その変数がルーチンから呼び出されます。
@@ -129,7 +129,7 @@ HeatWave AutoMLを使用するためには以下の権限付与が必要にな�
    出力例: 花弁の長さとペタルの幅が最も重要な特徴だと示しています
    ![iris-ml-explain-out](./image/iris-ml-explain-out.png)
    
-## タスク5:
+## タスク5: テーブルに対する予測と説明
 1. **ML_PREDICT_TABLE** ルーチンを使って、テーブルデータに対するの予測を行います。
 
   ここではiris_testテーブルのデータを入力として受け取り、iris_predictions出力テーブルに予測を出力します。
