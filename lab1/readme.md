@@ -36,7 +36,7 @@
 
 ![home-menu-networking-vcn](./image/home-menu-networking-vcn.png)
 
-2. [VCNウィザードの起動]をクリックして表示されるウィザード画面で[インターネット接続性を持つVCNの作成]を選択します。
+2. コンパートメントにautomlを選択して、[VCNウィザードの起動]をクリックします。表示されるウィザード画面で[インターネット接続性を持つVCNの作成]を選択します。
 
 ![vcn-wizard-launch](./image/vcn-wizard-launch.png)
 
