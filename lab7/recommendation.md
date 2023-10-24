@@ -12,8 +12,8 @@ HeatWave AutoMLではどちらの場合もレコメンデーションモデル�
 
 ## タスク1: データを準備する
 1. CSVファイルをダウンロードして、オブジェクト・ストレージに格納します。
-    [ml-100k_train.csv](./recommendation/ml-100k_train.csv)
-    [ml-100k_test.csv](./recommendation/ml-100k_test.csv)   
+    [ml-100k_train.csv](./reccommendation/ml-100k_train.csv)
+    [ml-100k_test.csv](./reccommendation/ml-100k_test.csv)   
 
 2. MySQL ShellでMySQL HeatWaveに接続し、SQLモードでスキーマ、テーブルを作成します。
 ```sql
