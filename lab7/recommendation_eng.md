@@ -12,8 +12,8 @@ HeatWave AutoML can create recommendation models in both cases.
 
 ## Task1: Preparing data
 1. Download the CSV file and store it in object storage.
-    [ml-100k_train.csv](./recommendation/ml-100k_train.csv)
-    [ml-100k_test.csv](./recommendation/ml-100k_test.csv)   
+    [ml-100k_train.csv](./reccomendation/ml-100k_train.csv)
+    [ml-100k_test.csv](./reccomendation/ml-100k_test.csv)
 
 2. Connect to MySQL HeatWave with MySQL Shell and create schema and tables in SQL mode.
 ```sql
