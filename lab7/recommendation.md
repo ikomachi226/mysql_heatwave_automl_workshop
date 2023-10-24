@@ -38,7 +38,7 @@ util.importTable("ml-100k_train.csv",{table: "ml-100k_train", dialect: "csv-unix
 util.importTable("ml-100k_test.csv",{table: "ml-100k_test", dialect: "csv-unix", skipRows:1})
 ```
 
-3. MySQL ShellのSQLモードに変更し、モデル作成の準備とデータが格納されていることをします。
+3. MySQL ShellのSQLモードに変更し、テーブルの作成とデータが格納されていることを確認します。
 ```sql
 \sql
 CREATE TABLE `ml-100k`LIKE `ml-100k_test`;
